@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import UserNotifications
 import Firebase
 
 @UIApplicationMain
@@ -16,16 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let gcmMessageIDKey = "gcm.message_id"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        // Firebaseの共有インスタインスの設定
         FirebaseApp.configure()
         
         // [START set_messaging_delegate]
+        // CloudMessagingのデリゲートを設定
         Messaging.messaging().delegate = self
         // [END set_messaging_delegate]
+        
+        UIApplication.shared.registerForRemoteNotifications()
         
         // Register for remote notifications. This shows a permission dialog on first run, to
         // show the dialog at a more appropriate time move this registration accordingly.
         // [START register_for_notifications]
+        // 通知の設定を行う
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
@@ -49,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // [START receive_message]
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        
         // If you are receiving a notification message while your app is in the background,
         // this callback will not be fired till the user taps on the notification launching the application.
         // TODO: Handle data of notification
@@ -59,10 +65,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Message ID: \(messageID)")
         }
         
+        print("didReceiveRemoteNotification")
+        
         // Print full message.
         print(userInfo)
     }
     
+    // 通知を受け取った場合
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // If you are receiving a notification message while your app is in the background,
@@ -78,9 +87,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Print full message.
         print(userInfo)
         
+        print("silent notification")
+        print(#function)
+        
         completionHandler(UIBackgroundFetchResult.newData)
     }
     // [END receive_message]
+    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Unable to register for remote notifications: \(error.localizedDescription)")
     }
@@ -89,10 +102,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // If swizzling is disabled then this function must be implemented so that the APNs token can be paired to
     // the FCM registration token.
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        Messaging.messaging().subscribe(toTopic: "ios") { error in
+            print("Subscribed to ios topic")
+        }
+        
         print("APNs token retrieved: \(deviceToken)")
         
         // With swizzling disabled you must set the APNs token here.
-        // Messaging.messaging().apnsToken = deviceToken
+        Messaging.messaging().apnsToken = deviceToken
     }
     
     // MARK: UISceneSession Lifecycle
@@ -115,6 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate : UNUserNotificationCenterDelegate {
     
     // Receive displayed notifications for iOS 10 devices.
+    // アプリ起動時に通知を受け取った時
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -134,6 +153,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         completionHandler([[.alert, .sound]])
     }
     
+    // 受け取った通知を開いた時 ユーザーが通知バナーをタップしたとき
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -156,10 +176,11 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 
 extension AppDelegate : MessagingDelegate {
     // [START refresh_token]
+    
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
         
-        let dataDict:[String: String] = ["token": fcmToken]
+        let dataDict:[String: String] = ["token": "ios"]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.

@@ -13,4 +13,6 @@ pod 'Firebase/Analytics'
 # Add the pod for Firebase Cloud Messaging
 pod 'Firebase/Messaging'
 
+pod 'Firebase/Core'
+
 end

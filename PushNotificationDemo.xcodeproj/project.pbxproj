@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		018E26A78C69B9D1D8D1AEE3 /* Pods_PushNotificationDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 915D1D4AD5C63005FF66BB0E /* Pods_PushNotificationDemo.framework */; };
+		3C6B534025219CC100D56141 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B533F25219CC100D56141 /* LocationService.swift */; };
 		3C92B474251F901900E9ACAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C92B473251F901900E9ACAE /* GoogleService-Info.plist */; };
 		3CD80DEB251F3403000FF628 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD80DEA251F3403000FF628 /* AppDelegate.swift */; };
 		3CD80DED251F3403000FF628 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD80DEC251F3403000FF628 /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		08DC9593DDBBDA52C56DB2D3 /* Pods-PushNotificationDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushNotificationDemo.debug.xcconfig"; path = "Target Support Files/Pods-PushNotificationDemo/Pods-PushNotificationDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		28FFEF2E06E9B8EA67675A32 /* Pods-PushNotificationDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushNotificationDemo.release.xcconfig"; path = "Target Support Files/Pods-PushNotificationDemo/Pods-PushNotificationDemo.release.xcconfig"; sourceTree = "<group>"; };
+		3C6B533F25219CC100D56141 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		3C92B473251F901900E9ACAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CD80DE7251F3403000FF628 /* PushNotificationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushNotificationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CD80DEA251F3403000FF628 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				3CD80DF5251F3404000FF628 /* LaunchScreen.storyboard */,
 				3CD80DF8251F3404000FF628 /* Info.plist */,
 				3C92B473251F901900E9ACAE /* GoogleService-Info.plist */,
+				3C6B533F25219CC100D56141 /* LocationService.swift */,
 			);
 			path = PushNotificationDemo;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			files = (
 				3CD80DEF251F3403000FF628 /* ViewController.swift in Sources */,
 				3CD80DEB251F3403000FF628 /* AppDelegate.swift in Sources */,
+				3C6B534025219CC100D56141 /* LocationService.swift in Sources */,
 				3CD80DED251F3403000FF628 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

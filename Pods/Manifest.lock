@@ -82,6 +82,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - Firebase/Core
   - Firebase/Messaging
 
 SPEC REPOS:
@@ -115,6 +116,6 @@ SPEC CHECKSUMS:
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
 
-PODFILE CHECKSUM: cccd0aa7a7b871415ec012dac881c198c174f6a1
+PODFILE CHECKSUM: 7a08a56d253a8c2827b176fbadebdc37579b04e4
 
 COCOAPODS: 1.8.4
