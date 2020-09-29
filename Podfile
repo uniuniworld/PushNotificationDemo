@@ -8,7 +8,7 @@ target 'PushNotificationDemo' do
   # Pods for PushNotificationDemo
 
 # Add the Firebase pod for Google Analytics
-pod 'Firebase/Analytics'
+# pod 'Firebase/Analytics'
 
 # Add the pod for Firebase Cloud Messaging
 pod 'Firebase/Messaging'

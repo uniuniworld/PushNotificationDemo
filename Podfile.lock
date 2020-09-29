@@ -1,6 +1,4 @@
 PODS:
-  - Firebase/Analytics (6.33.0):
-    - Firebase/Core
   - Firebase/Core (6.33.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.8.3)
@@ -81,7 +79,6 @@ PODS:
   - Protobuf (3.13.0)
 
 DEPENDENCIES:
-  - Firebase/Analytics
   - Firebase/Core
   - Firebase/Messaging
 
@@ -116,6 +113,6 @@ SPEC CHECKSUMS:
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
 
-PODFILE CHECKSUM: 7a08a56d253a8c2827b176fbadebdc37579b04e4
+PODFILE CHECKSUM: 7b9274adcea4cc027f7d25f069d88d9b8693f350
 
 COCOAPODS: 1.8.4
